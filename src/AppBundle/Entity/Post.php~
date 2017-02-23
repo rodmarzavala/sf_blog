@@ -3,12 +3,11 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Post
  *
- * @ORM\Table(name="post", uniqueConstraints={@ORM\UniqueConstraint(name="ix_slug", columns={"slug"})})
+ * @ORM\Table(name="post")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PostRepository")
  */
 class Post
@@ -216,69 +215,5 @@ class Post
     {
         return $this->enabled;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->tags = new ArrayCollection();
-    }
-
-    /**
-     * Set category
-     *
-     * @param Category $category
-     *
-     * @return Post
-     */
-    public function setCategory(Category $category)
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
-    /**
-     * Get category
-     *
-     * @return Category
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    /**
-     * Add tag
-     *
-     * @param Tag $tag
-     *
-     * @return Post
-     */
-    public function addTag(Tag $tag)
-    {
-        $this->tags[] = $tag;
-
-        return $this;
-    }
-
-    /**
-     * Remove tag
-     *
-     * @param Tag $tag
-     */
-    public function removeTag(Tag $tag)
-    {
-        $this->tags->removeElement($tag);
-    }
-
-    /**
-     * Get tags
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getTags()
-    {
-        return $this->tags;
-    }
 }
+
